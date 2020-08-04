@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/mchto/modulo2_techground-manuelchinchilla/issues"
   },
-  "homepage": "https://github.com/mchto/modulo2_techground-manuelchinchilla#readme"
+  "homepage": "https://github.com/mchto/modulo2_techground-manuelchinchilla#readme",
+  "devDependencies": {
+    "@wdio/cli": "^6.3.6",
+    "@wdio/local-runner": "^6.3.6",
+    "@wdio/mocha-framework": "^6.3.6",
+    "@wdio/spec-reporter": "^6.3.6",
+    "@wdio/sync": "^6.3.6",
+    "chromedriver": "^84.0.1",
+    "wdio-chromedriver-service": "^6.0.3"
+  }
 }
