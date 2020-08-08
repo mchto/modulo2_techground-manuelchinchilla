@@ -16,8 +16,12 @@ describe('My Login application', () => {
 
     it('should open Global Feed tab', () => {
         DashboardPage.getGlobalFeedTab().click();
+        browser.pause(5000);
+        //console.log(DashboardPage.getArticlesList().lenght);
         //expect(DashboardPage.getGlobalFeedTab()).toHaveAttribute('class','nav-link active');
         expect(DashboardPage.getGlobalFeedTab()).toHaveClass('class',{ message: 'Not active tab!'});
         expect(DashboardPage.getGlobalFeedTab()).not.toHaveProperty('height','24px');
+        //aqui valida que el tamaño de la lista sea igual a 10
+        expect(DashboardPage.getArticlesList()).toBeElementsArrayOfSize({ eq: 10});
     });
 })
