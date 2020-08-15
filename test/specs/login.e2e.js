@@ -4,10 +4,30 @@ const DashboardPage = require('../pageobjects/dashboard.page');
 const waits = require('../helpers/waits');
 const articleDetailPage = require('../pageobjects/articleDetail.page');
 
+const user = require('../data/user');
+
 describe('My Login application', () => {
+
+    before(()=> {
+        browser.url('https://demo.realworld.io/');
+    })
+
+    beforeEach(()=> {
+        console.log('Before each');
+    })
+
+    after(()=> {
+        console.log('After');
+    })
+
+    afterEach(()=> {
+        console.log('After each');
+    })
+
     it('should login with valid credentials', () => {
         browser.setTimeout({'pageLoad': 10000});
-        NavigationPage.goToSignIn();
+        //NavigationPage.goToSignIn();
+        LoginPage.login(user.email,user.password);
         LoginPage.login('manuelchinchilla@prueba.com','manuelChinchilla123');
         browser.setTimeout({'implicit': 10000});
         expect(browser).toHaveUrl('https://demo.realworld.io/#/');
