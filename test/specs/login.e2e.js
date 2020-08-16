@@ -4,7 +4,7 @@ const DashboardPage = require('../pageobjects/dashboard.page');
 const waits = require('../helpers/waits');
 const articleDetailPage = require('../pageobjects/articleDetail.page');
 
-const user = require('../data/user');
+const user = require('../data/users');
 
 describe('My Login application', () => {
 
@@ -12,7 +12,7 @@ describe('My Login application', () => {
         browser.url('https://demo.realworld.io/');
     })
 
-    beforeEach(()=> {
+    /*beforeEach(()=> {
         console.log('Before each');
     })
 
@@ -22,13 +22,15 @@ describe('My Login application', () => {
 
     afterEach(()=> {
         console.log('After each');
-    })
+    })*/
 
+    
     it('should login with valid credentials', () => {
         browser.setTimeout({'pageLoad': 10000});
-        //NavigationPage.goToSignIn();
+        NavigationPage.goToSignIn();
+        console.log('username: '+user.email+'++password: '+user.password);
         LoginPage.login(user.email,user.password);
-        LoginPage.login('manuelchinchilla@prueba.com','manuelChinchilla123');
+        //LoginPage.login('manuelchinchilla@prueba.com','manuelChinchilla123');
         browser.setTimeout({'implicit': 10000});
         expect(browser).toHaveUrl('https://demo.realworld.io/#/');
         expect(DashboardPage.getYourFeedTab()).toHaveAttribute('class','nav-link active');
@@ -37,7 +39,7 @@ describe('My Login application', () => {
     it('should open Global Feed tab', () => {
         DashboardPage.getGlobalFeedTab().click();
         browser.setTimeout({'implicit': 10000});
-        expect(DashboardPage.getGlobalFeedTab()).toHaveClass('class',{ message: 'Not active tab!'});
+        expect(DashboardPage.getGlobalFeedTab()).toHaveClassContaining('active',{ message: 'Not active tab!'});
         expect(DashboardPage.getYourFeedTab()).toBeClickable();
     });
 

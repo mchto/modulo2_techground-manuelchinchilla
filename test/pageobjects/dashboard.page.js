@@ -12,24 +12,29 @@ class DashboarPage extends Page {
     get globalFeedTab () { return $('.nav-link=Global Feed')}
     //para un elemento singular se una $
     //para varios elementos se usa $$
-    get articlesRows () { return $$('//article-list/article-preview')};
+    //get articlesRows () { return $$('//article-list/article-preview')};
     //selector usado concat
     get articlesRows () { return $('<article-list/>').$$('article-preview')};
+    get readMoreAnchor () { return $('article-list').$$('article-preview')[1].$('span=Read more...')};
 
     getNoArticlesLabel() {
         return this.noArticlesLabel;
     }
 
-    getYourFeedTap() {
+    getYourFeedTab() {
         return this.yourFeedTab;
     }
 
-    getGlobalFeedTap() {
+    getGlobalFeedTab() {
         return this.globalFeedTab;
     }
     
     getArticlesList() {
         return this.articlesRows;
+    }
+
+    getReadMoreAnchor() {
+        return this.readMoreAnchor;
     }
 }
 
